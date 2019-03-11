@@ -1,0 +1,24 @@
+{
+  "name": "wp-graphql/wp-graphql-file-upload",
+  "description": "File Uploading for WPGraphQL",
+  "type": "wordpress-plugin",
+  "version": "0.1.0",
+  "license": "GPL-3.0+",
+  "authors": [
+	{
+	  "name": "hughdevore",
+	  "email": "hughdevore@gmail.com"
+	}
+  ],
+  "config": {
+	"optimize-autoloader": true
+  },
+  "autoload": {
+	"psr-4": {
+	  "WPGraphQL\\File_Upload\\": "src/"
+	},
+	"classmap": [
+	  "src/"
+	]
+  }
+}

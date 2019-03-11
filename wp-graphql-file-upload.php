@@ -150,7 +150,7 @@ if ( ! class_exists( '\WPGraphQL\File_Upload' ) ) :
 			/**
 			 * Initialize the GraphQL fields for managing file uploads
 			 */
-//			ManageUploads::init();
+			ManageUploads::init();
 		}
 
 	}
@@ -161,4 +161,4 @@ function init() {
 	return File_Upload::instance();
 }
 
-//add_action( 'graphql_init', '\WPGraphQL\File_Upload\init' );
+add_action( 'graphql_init', '\WPGraphQL\File_Upload\init' );
