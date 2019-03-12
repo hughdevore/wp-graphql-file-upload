@@ -10,7 +10,8 @@
     "react": "^16.8.4",
     "react-apollo": "^2.5.2",
     "react-dom": "^16.8.4",
-    "react-wp-scripts": "0.2.0"
+    "react-wp-scripts": "0.2.0",
+    "webpack-dev-server": ">=3.1.11"
   },
   "scripts": {
     "start": "react-wp-scripts start",
