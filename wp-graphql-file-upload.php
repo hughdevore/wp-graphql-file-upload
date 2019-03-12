@@ -89,7 +89,7 @@ if ( ! class_exists( 'File_Upload' ) ) :
 
 		/**
 		 * Check to see if WPGraphQL is active
-		 * 
+		 *
 		 * @return bool
 		 */
 		public function is_wpgraphql_active() {
@@ -103,12 +103,12 @@ if ( ! class_exists( 'File_Upload' ) ) :
 		public function register_admin_page() {
 			add_menu_page(
 				__( 'WP Apollo Upload', 'wp-graphql-file-upload' ),
-				'WP Apollo Upload',
+				'WP-GraphQL File Upload',
 				'manage_options',
 				'wp-apollo-upload',
 				[ $this, 'render_admin_page' ],
-				plugin_dir_url( __FILE__ . '/wp-apollo-upload/src/cloud-computing.svg' ),
-				1
+				'dashicons-upload',
+				6
 			);
 		}
 
