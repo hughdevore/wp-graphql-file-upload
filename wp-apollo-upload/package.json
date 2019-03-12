@@ -13,6 +13,9 @@
     "react-wp-scripts": "0.2.0",
     "webpack-dev-server": ">=3.1.11"
   },
+  "devDependencies": {
+    "webpack-dev-server": ">=3.1.11"
+  },
   "scripts": {
     "start": "react-wp-scripts start",
     "build": "react-scripts build",
