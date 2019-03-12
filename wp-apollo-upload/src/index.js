@@ -30,28 +30,9 @@ const props = {
 	}
 };
 
-// const LOGIN_MUTATION = gql`
-
-// `;
-
-// const UPLOAD_FILE_MUTATION = gql`
-//     mutation UPLOAD_FILE_MUTATION($input: CreateMediaItemInput! ) {
-//         createMediaItem(input: $input) {
-//             clientMutationId
-//             mediaItem {
-//                 id
-//                 mediaItemId
-//                 title
-//                 uri
-//                 sourceUrl
-//             }
-//         }
-//     }
-// `;
-
 const App = props => (
 	<ApolloProvider client={client}>
-		<div className="app">
+		<div className="App">
 			<h2 className="title">
 				WP-GraphQL File Upload{' '}
 				<span className="emoji" role="img" aria-label="rocket">

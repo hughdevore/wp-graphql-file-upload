@@ -40,6 +40,13 @@ if ( ! class_exists( 'File_Upload' ) ) :
 		 */
 		public function init() {
 
+			add_filter(
+				'reactwpscripts.is_development',
+				function() {
+					return false;
+				}
+			);
+
 			/**
 			 * Define the Plugin Folder Path if it doesn't exist
 			 */
@@ -80,6 +87,11 @@ if ( ! class_exists( 'File_Upload' ) ) :
 
 		}
 
+		/**
+		 * Check to see if WPGraphQL is active
+		 * 
+		 * @return bool
+		 */
 		public function is_wpgraphql_active() {
 			return class_exists( 'WPGraphQL' );
 		}
@@ -122,11 +134,20 @@ if ( ! class_exists( 'File_Upload' ) ) :
 			 * Only enqueue the assets on the proper admin page, and only if WPGraphQL is also active
 			 */
 			if ( strpos( get_current_screen()->id, 'wp-apollo-upload' ) && $this->is_wpgraphql_active() ) {
-				ReactWPScripts\enqueue_assets( dirname( __FILE__ ) . '/wp-apollo-upload' );
+				ReactWPScripts\enqueue_assets(
+					plugin_dir_path( __FILE__ ) . '/wp-apollo-upload',
+					[
+						'base_url' => '/wp-content/plugins/wp-graphql-file-upload/wp-apollo-upload',
+						'handle'   => 'wp-apollo-upload',
+					]
+				);
 			}
 
 		}
 
+		/**
+		 * Register the upload type
+		 */
 		public function add_upload_type() {
 
 			register_graphql_type(

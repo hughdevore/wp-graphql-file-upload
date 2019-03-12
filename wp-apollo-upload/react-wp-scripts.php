@@ -127,6 +127,7 @@ function get_asset_uri( string $asset_path, string $base_url ) {
  * }
  */
 function enqueue_assets( $directory, $opts = [] ) {
+
 	$defaults = [
 		'base_url' => '',
 		'handle'   => basename( $directory ),
@@ -160,6 +161,9 @@ function enqueue_assets( $directory, $opts = [] ) {
 		}
 
 		if ( $is_js ) {
+			$url = get_asset_uri( $asset_path, $base_url );
+			var_dump( $url );
+
 			wp_enqueue_script(
 				$opts['handle'],
 				get_asset_uri( $asset_path, $base_url ),
