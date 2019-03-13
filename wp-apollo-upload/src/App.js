@@ -8,17 +8,20 @@ import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
 import { Input, Upload, Button, Icon } from 'antd';
 import './index.css';
+import './App.css';
 
+/**
+ * Change this to the URL of your WordPress site
+ */
+const uri = 'http://denverpost.test/graphql';
 const httpLink = createHttpLink({
-	// Change this to the URL of your WordPress site.
-	uri: 'http://denverpost.test/graphql'
+	uri
 });
 
 const authLink = setContext((_, { headers }) => {
 	// get the authentication token from local storage if it exists
 	const token = localStorage.getItem('authToken');
 	// return the headers to the context so httpLink can read them
-	if (!token) return;
 	return {
 		headers: {
 			...headers,
@@ -133,24 +136,46 @@ class App extends Component {
 								this.authenticate();
 							}
 							return (
-								<div>
-									<h1>Login to your WordPress</h1>
+								<div className="App">
+									<h1 className="App-header">
+										Login to your local WordPress site at:{' '}
+										<a className="App-link" href={uri}>
+											<span>{uri}</span>
+										</a>
+									</h1>
 									<form>
-										<Input
-											name="username"
-											placeholder="username"
-											onChange={this.handleChange}
-											value={this.state.username}
-										/>
-										<Input.Password
-											name="password"
-											placeholder="password"
-											onChange={this.handleChange}
-											value={this.state.password}
-										/>
-										<Button onClick={login} type="primary">
-											Login
-										</Button>
+										<Input.Group size="large">
+											<Input
+												name="username"
+												placeholder="username"
+												onChange={this.handleChange}
+												value={this.state.username}
+												style={{
+													width: '100%',
+													display: 'block',
+													margin: '10px 0'
+												}}
+											/>
+											<Input.Password
+												name="password"
+												placeholder="password"
+												onChange={this.handleChange}
+												value={this.state.password}
+												style={{
+													width: '100%',
+													display: 'block',
+													margin: '10px 0'
+												}}
+											/>
+											<Button
+												onClick={login}
+												type="primary"
+												size="large"
+												style={{ marginTop: '10px' }}
+											>
+												Login
+											</Button>
+										</Input.Group>
 									</form>
 								</div>
 							);
@@ -161,8 +186,8 @@ class App extends Component {
 		} else {
 			return (
 				<ApolloProvider client={client}>
-					<div className="App-header">
-						<h2 className="app-title">
+					<div className="App">
+						<h2 className="App-header">
 							WP-GraphQL File Upload{' '}
 							<span
 								className="emoji"
