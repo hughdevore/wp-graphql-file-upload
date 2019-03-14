@@ -4,7 +4,11 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+/**
+ * In the wp-admin, this div is setup by render_admin_page in wp-graphql-file-upload.php for the HubView admin page where the
+ * React App is enqueued.
+ * */
+ReactDOM.render(<App />, document.getElementById('wp-apollo-upload'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
