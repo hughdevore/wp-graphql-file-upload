@@ -39,13 +39,6 @@ if ( ! class_exists( 'File_Upload' ) ) :
 		 */
 		public function init() {
 
-			add_filter(
-				'reactwpscripts.is_development',
-				function() {
-					return false;
-				}
-			);
-
 			/**
 			 * Define the Plugin Folder Path if it doesn't exist
 			 */
@@ -95,7 +88,7 @@ if ( ! class_exists( 'File_Upload' ) ) :
 			return class_exists( 'WPGraphQL' );
 		}
 
-		/*
+		/**
 		 * Add a settings tab to the admin menu for "WP GraphQL File Upload" and the page containing
 		 * the WP Apollo Upload React App for this plugin.
 		 */
@@ -116,7 +109,7 @@ if ( ! class_exists( 'File_Upload' ) ) :
 		 */
 		public function render_admin_page() {
 			if ( $this->is_wpgraphql_active() ) {
-				echo '<div class="wrap"><div id="wp-apollo-upload"></div></div>';
+				echo '<div id="wp-apollo-upload"></div>';
 			} else {
 				echo '<div class="wrap"><h1>This plugin requires WPGraphQL to be installed to work. Please install WPGraphQL (https://github.com/wp-graphql/wp-graphql) and visit this page again.</h1></div>';
 			}
@@ -143,7 +136,7 @@ if ( ! class_exists( 'File_Upload' ) ) :
 			if ( empty( $manifest['main.css'] ) ) {
 				return '';
 			}
-			return WPGRAPHQL_FILE_UPLOAD_PLUGIN_DIR . 'wp-apollo-upload/build' . $manifest['main.css'];
+			return WPGRAPHQL_FILE_UPLOAD_PLUGIN_DIR . 'wp-apollo-upload/build/' . $manifest['main.css'];
 		}
 		/**
 		 * Gets the path to the built javascript file compiled by Create React App
@@ -155,7 +148,7 @@ if ( ! class_exists( 'File_Upload' ) ) :
 			if ( empty( $manifest['main.js'] ) ) {
 				return '';
 			}
-			return WPGRAPHQL_FILE_UPLOAD_PLUGIN_DIR . 'wp-apollo-upload/build' . $manifest['main.js'];
+			return WPGRAPHQL_FILE_UPLOAD_PLUGIN_DIR . 'wp-apollo-upload/build/' . $manifest['main.js'];
 		}
 
 		/**
@@ -171,8 +164,8 @@ if ( ! class_exists( 'File_Upload' ) ) :
 				/**
 				 * Enqueue the app script and styles
 				 */
-				wp_enqueue_style( 'wp-apollo-upload', $this->get_app_stylesheet(), array(), false, false );
-				wp_enqueue_script( 'wp-apollo-upload', $this->get_app_script(), array(), false, true );
+				wp_enqueue_style( 'wp-apollo-upload', $this->get_app_stylesheet(), [], null, false );
+				wp_enqueue_script( 'wp-apollo-upload', $this->get_app_script(), [], null, true );
 			}
 
 		}

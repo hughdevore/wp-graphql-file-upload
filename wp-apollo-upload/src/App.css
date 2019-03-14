@@ -9,7 +9,7 @@
 	justify-content: center;
 	font-size: calc(10px + 2vmin);
 	color: white;
-	padding-left: 30vw;
+	padding-left: 20vw;
 }
 
 .App-logo {
@@ -26,4 +26,8 @@
 
 .App-link {
 	color: #61dafb;
+}
+
+#wpcontent {
+	padding-left: 0;
 }
